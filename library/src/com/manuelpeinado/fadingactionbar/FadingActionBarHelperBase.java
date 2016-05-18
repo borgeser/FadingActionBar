@@ -15,15 +15,13 @@
  */
 package com.manuelpeinado.fadingactionbar;
 
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
-
 import android.app.Activity;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
@@ -38,6 +36,9 @@ import android.widget.ListView;
 import com.manuelpeinado.fadingactionbar.view.ObservableScrollView;
 import com.manuelpeinado.fadingactionbar.view.ObservableWebViewWithHeader;
 import com.manuelpeinado.fadingactionbar.view.OnScrollChangedCallback;
+
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 @SuppressWarnings("unchecked")
 public abstract class FadingActionBarHelperBase {
@@ -154,8 +155,8 @@ public abstract class FadingActionBarHelperBase {
 
         // Use measured height here as an estimate of the header height, later on after the layout is complete 
         // we'll use the actual height
-        int widthMeasureSpec = MeasureSpec.makeMeasureSpec(LayoutParams.MATCH_PARENT, MeasureSpec.EXACTLY);
-        int heightMeasureSpec = MeasureSpec.makeMeasureSpec(LayoutParams.WRAP_CONTENT, MeasureSpec.EXACTLY);
+        int widthMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
+        int heightMeasureSpec = MeasureSpec.makeMeasureSpec(0, MeasureSpec.UNSPECIFIED);
         mHeaderView.measure(widthMeasureSpec, heightMeasureSpec);
         updateHeaderHeight(mHeaderView.getMeasuredHeight());
 
